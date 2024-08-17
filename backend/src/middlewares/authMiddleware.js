@@ -13,14 +13,11 @@ exports.authMiddleware = async (req, res, next) => {
         } catch (error) {
             res.status(401).json({ message: 'Not authorized, token failed' });
         }
-    }
-
-    if (!token) {
+    } else {
         res.status(401).json({ message: 'Not authorized, no token' });
     }
 };
 
-// Admin middleware
 exports.adminMiddleware = (req, res, next) => {
     if (req.user && req.user.role === 'admin') {
         next();
