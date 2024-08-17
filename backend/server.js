@@ -28,6 +28,10 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 
+app.get("/", (req, res)=>{
+    console.log("This is then Home Route")
+})
+
 io.on('connection', (socket) => {
     console.log('New client connected', socket.id);
 
